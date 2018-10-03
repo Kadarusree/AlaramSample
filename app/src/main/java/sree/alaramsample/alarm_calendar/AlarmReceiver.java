@@ -6,20 +6,10 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.media.AudioManager;
-import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.NotificationManagerCompat;
-import android.util.Log;
 
 
-import java.io.File;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -31,7 +21,7 @@ import sree.alaramsample.R;
  * Created by srikanthk on 8/7/2018.
  */
 
-public class CalanderAlarmReceiver extends BroadcastReceiver {
+public class AlarmReceiver extends BroadcastReceiver {
     Context ctx;
 
     @Override
@@ -42,7 +32,7 @@ public class CalanderAlarmReceiver extends BroadcastReceiver {
             String todayDate = (c.get(Calendar.MONTH) + 1) + "/" + c.get(Calendar.DAY_OF_MONTH) + "/" + c.get(Calendar.YEAR);
 
 
-            String date = intent.getStringExtra(AlarmManagerHelper_Calendar.DATE);
+            String date = intent.getStringExtra(AlarmManagerHelper.DATE);
             SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 
             Date d1 = sdf.parse(todayDate);
@@ -55,7 +45,7 @@ public class CalanderAlarmReceiver extends BroadcastReceiver {
 						getApplication().startActivity(alarmIntent);*/
 
                 Show_Notification("Calendar Reminder", intent, context);
-                AlarmManagerHelper_Calendar.setAlarms(context);
+                AlarmManagerHelper.setAlarms(context);
                 //i=super.onStartCommand(intent, flags, startId);
             } else {
                 //System.out.println(">>>>>>>>>>>>>>>>  Else block calling...");

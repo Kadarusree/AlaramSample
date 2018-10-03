@@ -12,13 +12,13 @@ import java.util.ArrayList;
 
 import sree.alaramsample.R;
 
-public class Test_Calendar_Adapter extends BaseAdapter
+public class Test_Adapter extends BaseAdapter
 {
 	   Test test;
 	   ArrayList<String> list_Type;
 	   ArrayList<String> list_Name;
 	 LayoutInflater inflater;
-		public Test_Calendar_Adapter(Test test, ArrayList<String> list_Type, ArrayList<String> list_Name)
+		public Test_Adapter(Test test, ArrayList<String> list_Type, ArrayList<String> list_Name)
 		{
 			this.test=test;
 			this.inflater= LayoutInflater.from(test);

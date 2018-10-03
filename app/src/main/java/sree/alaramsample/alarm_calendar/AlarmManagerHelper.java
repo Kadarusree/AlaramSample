@@ -10,7 +10,7 @@ import android.content.Intent;
 import java.util.Calendar;
 import java.util.List;
 
-public class AlarmManagerHelper_Calendar extends BroadcastReceiver {
+public class AlarmManagerHelper extends BroadcastReceiver {
 
 	public static final int	DAILY_REMINDER_REQUEST_CODE=1;
 
@@ -30,12 +30,12 @@ public class AlarmManagerHelper_Calendar extends BroadcastReceiver {
 	public static void setAlarms(Context context) {
 		cancelAlarms(context);
 		
-		AlarmDBHelper_Calendar dbHelper = new AlarmDBHelper_Calendar(context);
+		AlarmDBHelper dbHelper = new AlarmDBHelper(context);
 
-		List<AlarmModel_Calendar> alarms =  dbHelper.getAlarms();
+		List<AlarmModel> alarms =  dbHelper.getAlarms();
 
 		if (alarms!=null){
-			for (AlarmModel_Calendar alarm : alarms) {
+			for (AlarmModel alarm : alarms) {
 				if (alarm.isEnabled) {
 
 					PendingIntent pIntent = createPendingIntent(context, alarm);
@@ -95,12 +95,12 @@ public class AlarmManagerHelper_Calendar extends BroadcastReceiver {
 	}
 	
 	public static void cancelAlarms(Context context) {
-		AlarmDBHelper_Calendar dbHelper = new AlarmDBHelper_Calendar(context);
+		AlarmDBHelper dbHelper = new AlarmDBHelper(context);
 		
-		List<AlarmModel_Calendar> alarms =  dbHelper.getAlarms();
+		List<AlarmModel> alarms =  dbHelper.getAlarms();
 		
  		if (alarms != null) {
-			for (AlarmModel_Calendar alarm : alarms) {
+			for (AlarmModel alarm : alarms) {
 				if (alarm.isEnabled) {
 					PendingIntent pIntent = createPendingIntent(context, alarm);
 	
@@ -111,7 +111,7 @@ public class AlarmManagerHelper_Calendar extends BroadcastReceiver {
  		}
 	}
 
-	private static PendingIntent createPendingIntent(Context context, AlarmModel_Calendar model) {
+	private static PendingIntent createPendingIntent(Context context, AlarmModel model) {
 		/*Intent intent = new Intent(context, AlarmService_Calendar.class);
 		intent.putExtra(ID, model.id);
 		intent.putExtra(NAME, model.name);
@@ -123,7 +123,7 @@ public class AlarmManagerHelper_Calendar extends BroadcastReceiver {
 		
 		return PendingIntent.getService(context, (int) model.id, intent, PendingIntent.FLAG_UPDATE_CURRENT);*/
 
-		/*ComponentName receiver = new ComponentName(context, CalanderAlarmReceiver.class);
+		/*ComponentName receiver = new ComponentName(context, AlarmReceiver.class);
 		PackageManager pm = context.getPackageManager();
 		pm.setComponentEnabledSetting(receiver,
 				PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
@@ -132,11 +132,11 @@ public class AlarmManagerHelper_Calendar extends BroadcastReceiver {
 		/*Intent intent = new Intent();
 		intent.setAction(ALARM_RECEIVER_INTENT_TRIGGER)
 		final IntentFilter intentFilter = new IntentFilter(Action.ALARM_RECEIVER_INTENT_TRIGGER);
-		intent.setClass(context, CalanderAlarmReceiver.class);
+		intent.setClass(context, AlarmReceiver.class);
 
 
 		Intent intent = new Intent();
-		//intent.setClass(context,CalanderAlarmReceiver.class);
+		//intent.setClass(context,AlarmReceiver.class);
 		intent.setComponent(receiver);
 		intent.putExtra(ID, model.id);
 		intent.putExtra(NAME, model.name);
@@ -149,7 +149,7 @@ public class AlarmManagerHelper_Calendar extends BroadcastReceiver {
 				PendingIntent.FLAG_UPDATE_CURRENT);*/
 
 
-			Intent intent = new Intent(context, CalanderAlarmReceiver.class);
+			Intent intent = new Intent(context, AlarmReceiver.class);
 		intent.putExtra(ID, model.id);
 		intent.putExtra(NAME, model.name);
 		intent.putExtra(TYPE, model.type);

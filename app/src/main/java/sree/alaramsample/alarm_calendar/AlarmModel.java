@@ -2,7 +2,7 @@ package sree.alaramsample.alarm_calendar;
 
 import android.net.Uri;
 
-public class AlarmModel_Calendar {
+public class AlarmModel {
 
 	public static final int SUNDAY = 0;
 	public static final int MONDAY = 1;
@@ -25,7 +25,7 @@ public class AlarmModel_Calendar {
 	
 		
 	
-	public AlarmModel_Calendar() {
+	public AlarmModel() {
 		repeatingDays = new boolean[7];
 	}
 	

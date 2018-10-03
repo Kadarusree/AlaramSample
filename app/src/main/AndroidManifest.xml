@@ -17,8 +17,8 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".alarm_calendar.CalanderAlarmReceiver"></receiver>
-        <receiver android:name=".alarm_calendar.AlarmManagerHelper_Calendar"></receiver>
+        <receiver android:name=".alarm_calendar.AlarmReceiver"></receiver>
+        <receiver android:name=".alarm_calendar.AlarmManagerHelper"></receiver>
 
         <activity android:name=".alarm_calendar.Test"></activity>
     </application>

@@ -3,19 +3,16 @@ package sree.alaramsample;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import java.io.InputStream;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.StringTokenizer;
 
-import sree.alaramsample.alarm_calendar.AlarmDBHelper_Calendar;
-import sree.alaramsample.alarm_calendar.AlarmManagerHelper_Calendar;
-import sree.alaramsample.alarm_calendar.AlarmModel_Calendar;
+import sree.alaramsample.alarm_calendar.AlarmDBHelper;
+import sree.alaramsample.alarm_calendar.AlarmManagerHelper;
+import sree.alaramsample.alarm_calendar.AlarmModel;
 
 public class MainActivity extends AppCompatActivity {
-    public AlarmDBHelper_Calendar dbHelper_calendar = new AlarmDBHelper_Calendar(this);
+    public AlarmDBHelper dbHelper_calendar = new AlarmDBHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void addAlarm() {
 
-        AlarmModel_Calendar alarmDetails = new AlarmModel_Calendar();
+        AlarmModel alarmDetails = new AlarmModel();
 
         String dt = "10/03/2018";
 
@@ -51,91 +48,91 @@ public class MainActivity extends AppCompatActivity {
         alarmDetails.repeatWeekly = false;
 
         if (cal_Alarm.getTime().toString().trim().contains("Sun")) {
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.SUNDAY, true);
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.MONDAY, false);
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.TUESDAY, false);
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.WEDNESDAY, false);
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.THURSDAY, false);
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.FRDIAY, false);
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.SATURDAY, false);
+            alarmDetails.setRepeatingDay(AlarmModel.SUNDAY, true);
+            alarmDetails.setRepeatingDay(AlarmModel.MONDAY, false);
+            alarmDetails.setRepeatingDay(AlarmModel.TUESDAY, false);
+            alarmDetails.setRepeatingDay(AlarmModel.WEDNESDAY, false);
+            alarmDetails.setRepeatingDay(AlarmModel.THURSDAY, false);
+            alarmDetails.setRepeatingDay(AlarmModel.FRDIAY, false);
+            alarmDetails.setRepeatingDay(AlarmModel.SATURDAY, false);
             alarmDetails.isEnabled = true;
             dbHelper_calendar.createAlarm(alarmDetails);
         } else if (cal_Alarm.getTime().toString().trim().contains("Mon")) {
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.SUNDAY, false);
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.MONDAY, true);
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.TUESDAY, false);
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.WEDNESDAY, false);
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.THURSDAY, false);
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.FRDIAY, false);
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.SATURDAY, false);
+            alarmDetails.setRepeatingDay(AlarmModel.SUNDAY, false);
+            alarmDetails.setRepeatingDay(AlarmModel.MONDAY, true);
+            alarmDetails.setRepeatingDay(AlarmModel.TUESDAY, false);
+            alarmDetails.setRepeatingDay(AlarmModel.WEDNESDAY, false);
+            alarmDetails.setRepeatingDay(AlarmModel.THURSDAY, false);
+            alarmDetails.setRepeatingDay(AlarmModel.FRDIAY, false);
+            alarmDetails.setRepeatingDay(AlarmModel.SATURDAY, false);
             alarmDetails.isEnabled = true;
             dbHelper_calendar.createAlarm(alarmDetails);
         } else if (cal_Alarm.getTime().toString().trim().contains("Tue")) {
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.SUNDAY, false);
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.MONDAY, false);
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.TUESDAY, true);
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.WEDNESDAY, false);
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.THURSDAY, false);
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.FRDIAY, false);
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.SATURDAY, false);
+            alarmDetails.setRepeatingDay(AlarmModel.SUNDAY, false);
+            alarmDetails.setRepeatingDay(AlarmModel.MONDAY, false);
+            alarmDetails.setRepeatingDay(AlarmModel.TUESDAY, true);
+            alarmDetails.setRepeatingDay(AlarmModel.WEDNESDAY, false);
+            alarmDetails.setRepeatingDay(AlarmModel.THURSDAY, false);
+            alarmDetails.setRepeatingDay(AlarmModel.FRDIAY, false);
+            alarmDetails.setRepeatingDay(AlarmModel.SATURDAY, false);
             alarmDetails.isEnabled = true;
             dbHelper_calendar.createAlarm(alarmDetails);
         } else if (cal_Alarm.getTime().toString().trim().contains("Wed")) {
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.SUNDAY, false);
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.MONDAY, false);
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.TUESDAY, false);
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.WEDNESDAY, true);
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.THURSDAY, false);
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.FRDIAY, false);
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.SATURDAY, false);
+            alarmDetails.setRepeatingDay(AlarmModel.SUNDAY, false);
+            alarmDetails.setRepeatingDay(AlarmModel.MONDAY, false);
+            alarmDetails.setRepeatingDay(AlarmModel.TUESDAY, false);
+            alarmDetails.setRepeatingDay(AlarmModel.WEDNESDAY, true);
+            alarmDetails.setRepeatingDay(AlarmModel.THURSDAY, false);
+            alarmDetails.setRepeatingDay(AlarmModel.FRDIAY, false);
+            alarmDetails.setRepeatingDay(AlarmModel.SATURDAY, false);
             alarmDetails.isEnabled = true;
             dbHelper_calendar.createAlarm(alarmDetails);
         } else if (cal_Alarm.getTime().toString().trim().contains("Thu")) {
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.SUNDAY, false);
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.MONDAY, false);
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.TUESDAY, false);
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.WEDNESDAY, false);
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.THURSDAY, true);
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.FRDIAY, false);
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.SATURDAY, false);
+            alarmDetails.setRepeatingDay(AlarmModel.SUNDAY, false);
+            alarmDetails.setRepeatingDay(AlarmModel.MONDAY, false);
+            alarmDetails.setRepeatingDay(AlarmModel.TUESDAY, false);
+            alarmDetails.setRepeatingDay(AlarmModel.WEDNESDAY, false);
+            alarmDetails.setRepeatingDay(AlarmModel.THURSDAY, true);
+            alarmDetails.setRepeatingDay(AlarmModel.FRDIAY, false);
+            alarmDetails.setRepeatingDay(AlarmModel.SATURDAY, false);
             alarmDetails.isEnabled = true;
             dbHelper_calendar.createAlarm(alarmDetails);
         } else if (cal_Alarm.getTime().toString().trim().contains("Fri")) {
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.SUNDAY, false);
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.MONDAY, false);
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.TUESDAY, false);
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.WEDNESDAY, false);
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.THURSDAY, false);
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.FRDIAY, true);
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.SATURDAY, false);
+            alarmDetails.setRepeatingDay(AlarmModel.SUNDAY, false);
+            alarmDetails.setRepeatingDay(AlarmModel.MONDAY, false);
+            alarmDetails.setRepeatingDay(AlarmModel.TUESDAY, false);
+            alarmDetails.setRepeatingDay(AlarmModel.WEDNESDAY, false);
+            alarmDetails.setRepeatingDay(AlarmModel.THURSDAY, false);
+            alarmDetails.setRepeatingDay(AlarmModel.FRDIAY, true);
+            alarmDetails.setRepeatingDay(AlarmModel.SATURDAY, false);
             alarmDetails.isEnabled = true;
             dbHelper_calendar.createAlarm(alarmDetails);
         } else if (cal_Alarm.getTime().toString().trim().contains("Sat")) {
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.SUNDAY, false);
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.MONDAY, false);
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.TUESDAY, false);
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.WEDNESDAY, false);
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.THURSDAY, false);
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.FRDIAY, false);
-            alarmDetails.setRepeatingDay(AlarmModel_Calendar.SATURDAY, true);
+            alarmDetails.setRepeatingDay(AlarmModel.SUNDAY, false);
+            alarmDetails.setRepeatingDay(AlarmModel.MONDAY, false);
+            alarmDetails.setRepeatingDay(AlarmModel.TUESDAY, false);
+            alarmDetails.setRepeatingDay(AlarmModel.WEDNESDAY, false);
+            alarmDetails.setRepeatingDay(AlarmModel.THURSDAY, false);
+            alarmDetails.setRepeatingDay(AlarmModel.FRDIAY, false);
+            alarmDetails.setRepeatingDay(AlarmModel.SATURDAY, true);
             alarmDetails.isEnabled = true;
             dbHelper_calendar.createAlarm(alarmDetails);
         }
 		/*
-		 * alarmDetails.setRepeatingDay(AlarmModel_Calendar.SUNDAY, true);
-		 * alarmDetails.setRepeatingDay(AlarmModel_Calendar.MONDAY, true);
-		 * alarmDetails.setRepeatingDay(AlarmModel_Calendar.TUESDAY, true);
-		 * alarmDetails.setRepeatingDay(AlarmModel_Calendar.WEDNESDAY, true);
-		 * alarmDetails.setRepeatingDay(AlarmModel_Calendar.THURSDAY, true);
-		 * alarmDetails.setRepeatingDay(AlarmModel_Calendar.FRDIAY, true);
-		 * alarmDetails.setRepeatingDay(AlarmModel_Calendar.SATURDAY, true);
+		 * alarmDetails.setRepeatingDay(AlarmModel.SUNDAY, true);
+		 * alarmDetails.setRepeatingDay(AlarmModel.MONDAY, true);
+		 * alarmDetails.setRepeatingDay(AlarmModel.TUESDAY, true);
+		 * alarmDetails.setRepeatingDay(AlarmModel.WEDNESDAY, true);
+		 * alarmDetails.setRepeatingDay(AlarmModel.THURSDAY, true);
+		 * alarmDetails.setRepeatingDay(AlarmModel.FRDIAY, true);
+		 * alarmDetails.setRepeatingDay(AlarmModel.SATURDAY, true);
 		 * alarmDetails.isEnabled = true;
 		 * dbHelper_calendar.createAlarm(alarmDetails);
 		 */
         // finish();
 
         if (dbHelper_calendar.getAlarms() != null && dbHelper_calendar.getAlarms().size() > 0) {
-            AlarmManagerHelper_Calendar.setAlarms(this);
+            AlarmManagerHelper.setAlarms(this);
         }
     }
 }

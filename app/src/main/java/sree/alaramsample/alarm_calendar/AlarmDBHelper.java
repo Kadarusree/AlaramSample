@@ -5,13 +5,13 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import sree.alaramsample.alarm_calendar.AlarmContract_Calendar.Alarm;
+import sree.alaramsample.alarm_calendar.AlarmContract.Alarm;
 
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AlarmDBHelper_Calendar extends SQLiteOpenHelper {
+public class AlarmDBHelper extends SQLiteOpenHelper {
 
 	public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "alarmclock_calendar.db";
@@ -30,7 +30,7 @@ public class AlarmDBHelper_Calendar extends SQLiteOpenHelper {
 	private static final String SQL_DELETE_ALARM =
 		    "DROP TABLE IF EXISTS " + Alarm.TABLE_NAME;
     
-	public AlarmDBHelper_Calendar(Context context) {
+	public AlarmDBHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
 	}
 
@@ -45,8 +45,8 @@ public class AlarmDBHelper_Calendar extends SQLiteOpenHelper {
         onCreate(db);
 	}
 	
-	private AlarmModel_Calendar populateModel(Cursor c) {
-		AlarmModel_Calendar model = new AlarmModel_Calendar();
+	private AlarmModel populateModel(Cursor c) {
+		AlarmModel model = new AlarmModel();
 		model.id = c.getLong(c.getColumnIndex(Alarm._ID));
 		model.name = c.getString(c.getColumnIndex(Alarm.COLUMN_NAME_ALARM_NAME));
 		model.date = c.getString(c.getColumnIndex(Alarm.COLUMN_NAME_ALARM_DATE));
@@ -65,7 +65,7 @@ public class AlarmDBHelper_Calendar extends SQLiteOpenHelper {
 		return model;
 	}
 	
-	private ContentValues populateContent(AlarmModel_Calendar model) {
+	private ContentValues populateContent(AlarmModel model) {
 		ContentValues values = new ContentValues();
         values.put(Alarm.COLUMN_NAME_ALARM_NAME, model.name);
         values.put(Alarm.COLUMN_NAME_ALARM_TYPE, model.type);
@@ -85,17 +85,17 @@ public class AlarmDBHelper_Calendar extends SQLiteOpenHelper {
         return values;
 	}
 	
-	public long createAlarm(AlarmModel_Calendar model) {
+	public long createAlarm(AlarmModel model) {
 		ContentValues values = populateContent(model);
         return getWritableDatabase().insert(Alarm.TABLE_NAME, null, values);
 	}
 	
-	public long updateAlarm(AlarmModel_Calendar model) {
+	public long updateAlarm(AlarmModel model) {
 		ContentValues values = populateContent(model);
         return getWritableDatabase().update(Alarm.TABLE_NAME, values, Alarm._ID + " = ?", new String[] { String.valueOf(model.id) });
 	}
 	
-	public AlarmModel_Calendar getAlarm(long id) {
+	public AlarmModel getAlarm(long id) {
 		SQLiteDatabase db = this.getReadableDatabase();
         String select = "SELECT * FROM " + Alarm.TABLE_NAME + " WHERE " + Alarm._ID + " = " + id;
 		Cursor c = db.rawQuery(select, null);
@@ -109,14 +109,14 @@ public class AlarmDBHelper_Calendar extends SQLiteOpenHelper {
 	
 	
 	
-	public List<AlarmModel_Calendar> getAlarms() {
+	public List<AlarmModel> getAlarms() {
 		SQLiteDatabase db = this.getReadableDatabase();
 		
         String select = "SELECT * FROM " + Alarm.TABLE_NAME;
 		
 		Cursor c = db.rawQuery(select, null);
 		
-		List<AlarmModel_Calendar> alarmList = new ArrayList<AlarmModel_Calendar>();
+		List<AlarmModel> alarmList = new ArrayList<AlarmModel>();
 		
 		while (c.moveToNext()) {
 			alarmList.add(populateModel(c));

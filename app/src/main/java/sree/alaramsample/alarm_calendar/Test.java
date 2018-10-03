@@ -3,15 +3,7 @@ package sree.alaramsample.alarm_calendar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.PorterDuffXfermode;
 import android.media.MediaPlayer;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.PowerManager;
@@ -27,14 +19,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.StringTokenizer;
 
 import sree.alaramsample.R;
@@ -85,11 +70,11 @@ public class Test extends Activity {
 
 
 
-        String name = getIntent().getStringExtra(AlarmManagerHelper_Calendar.NAME);
-        String type = getIntent().getStringExtra(AlarmManagerHelper_Calendar.TYPE);
-        String date = getIntent().getStringExtra(AlarmManagerHelper_Calendar.DATE);
-        int timeHour = getIntent().getIntExtra(AlarmManagerHelper_Calendar.TIME_HOUR, 0);
-        int timeMinute = getIntent().getIntExtra(AlarmManagerHelper_Calendar.TIME_MINUTE, 0);
+        String name = getIntent().getStringExtra(AlarmManagerHelper.NAME);
+        String type = getIntent().getStringExtra(AlarmManagerHelper.TYPE);
+        String date = getIntent().getStringExtra(AlarmManagerHelper.DATE);
+        int timeHour = getIntent().getIntExtra(AlarmManagerHelper.TIME_HOUR, 0);
+        int timeMinute = getIntent().getIntExtra(AlarmManagerHelper.TIME_MINUTE, 0);
 
         if (timeMinute <= 9) {
             tvTime.setText(timeHour + ":0" + timeMinute);
@@ -136,7 +121,7 @@ public class Test extends Activity {
         }
         //	list_Type.add(type);
         //System.out.println("/////list of type"+list_Type.toString());
-        listViewReminders.setAdapter(new Test_Calendar_Adapter(this, list_Type, list_Name));
+        listViewReminders.setAdapter(new Test_Adapter(this, list_Type, list_Name));
 
         btnDismiss.setOnClickListener(new OnClickListener() {
             @Override

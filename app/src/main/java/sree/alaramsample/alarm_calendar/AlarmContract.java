@@ -2,9 +2,9 @@ package sree.alaramsample.alarm_calendar;
 
 import android.provider.BaseColumns;
 
-public final class AlarmContract_Calendar {
+public final class AlarmContract {
 	
-	public AlarmContract_Calendar() {}
+	public AlarmContract() {}
 	
 	public static abstract class Alarm implements BaseColumns {
 		public static final String TABLE_NAME = "alarm_calendar";
